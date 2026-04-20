@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA & Éthique Digitale</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f8fbff;color:#0f172a;overflow:hidden}
+
+.slide{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:80px;
+ height:100vh;
+ width:100vw;
+ position:absolute;
+ opacity:0;
+ transform:translateX(60px);
+ transition:all .6s ease;
+ gap:40px;
+}
+
+.slide.active{opacity:1;transform:translateX(0)}
+
+.text{max-width:55%}
+
+h1{font-size:44px;margin-bottom:20px;color:#1d4ed8}
+
+p{font-size:20px;margin-bottom:15px}
+
+ul{font-size:18px;line-height:1.6}
+li{margin-bottom:8px}
+
+img{
+ width:40%;
+ border-radius:20px;
+ box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.progress{position:fixed;top:0;left:0;height:5px;background:#1d4ed8;width:0%}
+
+.controls{position:fixed;bottom:20px;width:100%;display:flex;justify-content:space-between;padding:0 30px}
+
+button{
+ background:white;
+ border:2px solid #1d4ed8;
+ color:#1d4ed8;
+ padding:10px 18px;
+ border-radius:10px;
+ cursor:pointer;
+ font-weight:600;
+}
+
+button:hover{background:#1d4ed8;color:white}
+
+/* 📱 MOBILE RESPONSIVE */
+@media (max-width: 768px){
+ body{overflow:auto}
+ .slide{
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px 20px;
+ }
+ .text{max-width:100%}
+ h1{font-size:28px}
+ p{font-size:16px}
+ ul{font-size:15px}
+ img{
+  width:90%;
+  margin-top:20px;
+ }
+ .controls{
+  bottom:10px;
+ }
+}
+
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<div class="slide active">
+<div class="text">
+<h1>IA & Éthique Digitale</h1>
+<p>Le numérique transforme notre manière de vivre et de partager.</p>
+<ul>
+<li>Partage massif de contenus</li>
+<li>Utilisation de l’IA</li>
+<li>Importance de l’éthique</li>
+</ul>
+</div>
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+</div>
+
+<div class="slide">
+<div class="text">
+<h1>IA et Données</h1>
+<p>L’IA apprend grâce aux données disponibles en ligne.</p>
+<ul>
+<li>Images, vidéos, textes</li>
+<li>Reconnaissance faciale</li>
+<li>Apprentissage automatique</li>
+</ul>
+</div>
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+</div>
+
+<div class="slide">
+<div class="text">
+<h1>Vie Privée</h1>
+<p>Les données peuvent être utilisées sans autorisation.</p>
+<ul>
+<li>Identification automatique</li>
+<li>Perte de contrôle</li>
+<li>Risques personnels</li>
+</ul>
+</div>
+<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
+</div>
+
+<div class="slide">
+<div class="text">
+<h1>Collaboration</h1>
+<p>Les outils numériques facilitent le travail en groupe.</p>
+<ul>
+<li>Chats et groupes</li>
+<li>Partage rapide</li>
+<li>Travail collaboratif</li>
+</ul>
+</div>
+<img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c">
+</div>
+
+<div class="slide">
+<div class="text">
+<h1>Partage</h1>
+<p>Les contenus sont accessibles partout.</p>
+<ul>
+<li>Cloud</li>
+<li>Temps réel</li>
+<li>Accessibilité</li>
+</ul>
+</div>
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+</div>
+
+<div class="slide">
+<div class="text">
+<h1>Sécurité</h1>
+<p>Protéger les données est essentiel.</p>
+<ul>
+<li>Contrôle d’accès</li>
+<li>Permissions</li>
+<li>Protection</li>
+</ul>
+</div>
+<img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87">
+</div>
+
+<div class="slide">
+<div class="text">
+<h1>Bonnes Pratiques</h1>
+<p>Adopter les bons réflexes en ligne.</p>
+<ul>
+<li>Citer les sources</li>
+<li>Vérifier infos</li>
+<li>Éviter fake news</li>
+</ul>
+</div>
+<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40">
+</div>
+
+<div class="slide">
+<div class="text">
+<h1>Conclusion</h1>
+<p>L’IA est utile mais doit être contrôlée.</p>
+<ul>
+<li>Responsabilité</li>
+<li>Éthique</li>
+<li>Avenir sécurisé</li>
+</ul>
+</div>
+<img src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7">
+</div>
+
+<div class="controls">
+<button onclick="prevSlide()">⬅</button>
+<button onclick="nextSlide()">➡</button>
+</div>
+
+<script>
+let slides=document.querySelectorAll('.slide');
+let index=0;
+let progress=document.getElementById('progress');
+
+function update(){
+ slides.forEach(s=>s.classList.remove('active'));
+ slides[index].classList.add('active');
+ progress.style.width=((index+1)/slides.length)*100+'%';
+}
+
+function nextSlide(){index=(index+1)%slides.length;update();}
+function prevSlide(){index=(index-1+slides.length)%slides.length;update();}
+
+// clavier
+ document.addEventListener('keydown',e=>{
+ if(e.key==='ArrowRight')nextSlide();
+ if(e.key==='ArrowLeft')prevSlide();
+});
+
+// swipe mobile
+let startX=0;
+document.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
+document.addEventListener('touchend',e=>{
+ let endX=e.changedTouches[0].clientX;
+ if(startX-endX>50)nextSlide();
+ if(endX-startX>50)prevSlide();
+});
+</script>
+
+</body>
+</html>
